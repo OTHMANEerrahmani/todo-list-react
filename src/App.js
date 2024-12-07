@@ -1,15 +1,17 @@
+// App.js
 import React, { useState } from "react";
 import "./App.css";
 
 function App() {
     const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState("");
+    const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
     const addTask = () => {
-        if (newTask.trim() !== "" && description.trim() !== "") {
-            setTasks([...tasks, { title: newTask, desc: description }]);
-            setNewTask("");
+        if (title && description) {
+            const newTask = { title, description };
+            setTasks([...tasks, newTask]);
+            setTitle("");
             setDescription("");
         }
     };
@@ -20,126 +22,41 @@ function App() {
     };
 
     return (
-        <div className="App">
+        <div className="container">
             <h1>To-Do List</h1>
             <div>
                 <input
                     type="text"
                     placeholder="Titre de la tâche..."
-                    value={newTask}
-                    onChange={(e) => setNewTask(e.target.value)}
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <textarea
                     placeholder="Description..."
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
-                ></textarea>
-                <button onClick={addTask}>Ajouter</button>
+                />
+                <button className="add-btn" onClick={addTask}>
+                    Ajouter
+                </button>
             </div>
-            <ul>
+            <div>
                 {tasks.map((task, index) => (
-                    <li key={index}>
-                        <h3>{task.title}</h3>
-                        <p>{task.desc}</p>
-                        <button onClick={() => deleteTask(index)}>Supprimer</button>
-                    </li>
+                    <div className="task-item" key={index}>
+                        <h3 className="task-title">{task.title}</h3>
+                        <p className="task-desc">{task.description}</p>
+                        <button className="delete-btn" onClick={() => deleteTask(index)}>
+                            Supprimer
+                        </button>
+                    </div>
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }
-const [deadline, setDeadline] = useState("");
 
-const addTask = () => {
-    if (newTask.trim() !== "" && description.trim() !== "" && deadline !== "") {
-        setTasks([...tasks, { title: newTask, desc: description, deadline }]);
-        setNewTask("");
-        setDescription("");
-        setDeadline("");
-    }
-};
-
-return (
-    <div className="App">
-        <h1>To-Do List</h1>
-        <div>
-            <input
-                type="text"
-                placeholder="Titre de la tâche..."
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-            />
-            <textarea
-                placeholder="Description..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-            <input
-                type="date"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-            />
-            <button onClick={addTask}>Ajouter</button>
-        </div>
-        <ul>
-            {tasks.map((task, index) => (
-                <li key={index}>
-                    <h3>{task.title}</h3>
-                    <p>{task.desc}</p>
-                    <p><strong>Date limite :</strong> {task.deadline}</p>
-                    <button onClick={() => deleteTask(index)}>Supprimer</button>
-                </li>
-            ))}
-        </ul>
-    </div>
-);
-const [error, setError] = useState("");
-
-const addTask = () => {
-    if (!newTask.trim() || !description.trim() || !deadline) {
-        setError("Tous les champs sont obligatoires !");
-        return;
-    }
-    setTasks([...tasks, { title: newTask, desc: description, deadline }]);
-    setNewTask("");
-    setDescription("");
-    setDeadline("");
-    setError(""); // Réinitialiser l'erreur
-};
-
-return (
-    <div className="App">
-        <h1>To-Do List</h1>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <div>
-            <input
-                type="text"
-                placeholder="Titre de la tâche..."
-                value={newTask}
-                onChange={(e) => setNewTask(e.target.value)}
-            />
-            <textarea
-                placeholder="Description..."
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-            ></textarea>
-            <input
-                type="date"
-                value={deadline}
-                onChange={(e) => setDeadline(e.target.value)}
-            />
-            <button onClick={addTask}>Ajouter</button>
-        </div>
-        <ul>
-            {tasks.map((task, index) => (
-                <li key={index}>
-                    <h3>{task.title}</h3>
-                    <p>{task.desc}</p>
-                    <p><strong>Date limite :</strong> {task.deadline}</p>
-                    <button onClick={() => deleteTask(index)}>Supprimer</button>
-                </li>
-            ))}
-        </ul>
-    </div>
-);
 export default App;
+
+
+
+

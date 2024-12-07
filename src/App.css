@@ -1,67 +1,59 @@
-.App {
-  text-align: center;
+/* App.css */
+
+body {
   font-family: Arial, sans-serif;
-}
-
-input, textarea {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 300px;
-}
-
-textarea {
-  height: 100px;
-  resize: none;
-}
-
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #45a049;
-}
-
-ul {
-  list-style-type: none;
+  background-color: #f7f7f7;
+  margin: 0;
   padding: 0;
 }
 
-li {
-  margin: 20px auto;
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
   padding: 20px;
-  background: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  width: 50%;
-  text-align: left;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-h3 {
-  margin: 0 0 10px 0;
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+button {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.add-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+button.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.task-item {
+  background-color: #f9f9f9;
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-title {
+  font-size: 18px;
   color: #333;
 }
 
-p {
-  margin: 0;
+.task-desc {
+  font-size: 14px;
   color: #666;
-}
-
-li button {
-  background-color: #f44336;
-  margin-top: 10px;
-}
-input[type="date"] {
-  padding: 10px;
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-top: 5px;
 }
